@@ -41,7 +41,6 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
     }
-
     public void addData(){
 
         AlertDialog.Builder mydialog=new AlertDialog.Builder(this);
