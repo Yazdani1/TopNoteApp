@@ -49,10 +49,7 @@ public class HomeActivity extends AppCompatActivity {
         mydialog.setView(mview);
 
         AlertDialog dialog=mydialog.create();
-
-
-
-
+        
         dialog.show();
 
     }
