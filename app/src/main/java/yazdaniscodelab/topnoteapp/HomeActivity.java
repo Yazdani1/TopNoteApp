@@ -42,14 +42,13 @@ public class HomeActivity extends AppCompatActivity {
         });
     }
     public void addData(){
-
         AlertDialog.Builder mydialog=new AlertDialog.Builder(this);
         LayoutInflater inflater=LayoutInflater.from(this);
         View mview=inflater.inflate(R.layout.add_data,null);
         mydialog.setView(mview);
 
         AlertDialog dialog=mydialog.create();
-        
+
         dialog.show();
 
     }
