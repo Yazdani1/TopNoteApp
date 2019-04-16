@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "691698591772",
+    "firebase_url": "https://topnote-f5ec3.firebaseio.com",
+    "project_id": "topnote-f5ec3",
+    "storage_bucket": "topnote-f5ec3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:691698591772:android:df67668c1258821b",
+        "android_client_info": {
+          "package_name": "yazdaniscodelab.topnoteapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "691698591772-s4aelomld3vq4jclsqmi9tvd9etqqhjm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCIqqedY8zbB368Ptoe9lCRvlwVu60cRQI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "691698591772-s4aelomld3vq4jclsqmi9tvd9etqqhjm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
