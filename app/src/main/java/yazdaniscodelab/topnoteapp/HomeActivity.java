@@ -36,6 +36,8 @@ public class HomeActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private DatabaseReference mDatabase;
 
+    String post_key;
+    String mTitle,mBudget,mNote;
 
 
     @Override
@@ -135,12 +137,25 @@ public class HomeActivity extends AppCompatActivity {
                         mDatabase
                 ) {
             @Override
-            protected void populateViewHolder(MyViewHolder viewHolder, Data model, int position) {
+            protected void populateViewHolder(MyViewHolder viewHolder, final Data model, final int position) {
 
                 viewHolder.setTitle(model.getTitle());
                 viewHolder.setNote(model.getNote());
                 viewHolder.setBudget(model.getBudget());
                 viewHolder.setDate(model.getDate());
+
+                viewHolder.myyview.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        post_key=getRef(position).getKey();
+                        mTitle=model.getTitle();
+                        mBudget=model.getBudget();
+                        mNote=model.getNote();
+
+                        editData();
+                    }
+                });
 
             }
         };
@@ -175,6 +190,68 @@ public class HomeActivity extends AppCompatActivity {
             TextView mDate=myyview.findViewById(R.id.sh_date);
             mDate.setText(date);
         }
+
+
+
+    }
+
+    public void editData(){
+
+        AlertDialog.Builder mydialog=new AlertDialog.Builder(this);
+        LayoutInflater inflater=LayoutInflater.from(this);
+        View mView=inflater.inflate(R.layout.edit_and_delete,null);
+        mydialog.setView(mView);
+
+        final AlertDialog dialog=mydialog.create();
+
+        final EditText title=mView.findViewById(R.id.title);
+        final EditText budget=mView.findViewById(R.id.budget);
+        final EditText note=mView.findViewById(R.id.note);
+
+
+        title.setText(mTitle);
+        title.setSelection(mTitle.length());
+
+        budget.setText(mBudget);
+        budget.setSelection(mBudget.length());
+
+        note.setText(mNote);
+        note.setSelection(mNote.length());
+
+
+        Button btnUpdate=mView.findViewById(R.id.update_btn);
+        Button btnDelete=mView.findViewById(R.id.delete_btn);
+
+
+        btnUpdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                mTitle=title.getText().toString().trim();
+                mBudget=budget.getText().toString().trim();
+                mNote=note.getText().toString().trim();
+
+                String mDate=DateFormat.getDateInstance().format(new Date());
+
+                Data data=new Data(mTitle,mBudget,mNote,mDate,post_key);
+
+                mDatabase.child(post_key).setValue(data);
+
+                dialog.dismiss();
+
+            }
+        });
+
+        btnDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mDatabase.child(post_key).removeValue();
+                dialog.dismiss();
+            }
+        });
+
+
+        dialog.show();
 
 
 
