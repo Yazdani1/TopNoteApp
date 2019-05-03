@@ -83,9 +83,7 @@ public class HomeActivity extends AppCompatActivity {
         LayoutInflater inflater=LayoutInflater.from(this);
         View mview=inflater.inflate(R.layout.add_data,null);
         mydialog.setView(mview);
-
         final AlertDialog dialog=mydialog.create();
-
         final EditText title=mview.findViewById(R.id.title);
         final EditText budget=mview.findViewById(R.id.budget);
         final EditText note=mview.findViewById(R.id.note);
